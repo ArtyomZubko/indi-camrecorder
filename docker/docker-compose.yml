@@ -1,0 +1,9 @@
+version: '3.8'
+
+services:
+  indi-server:
+    build: .
+    container_name: indi-simulator
+    ports:
+      - "7624:7624"
+    restart: unless-stopped
