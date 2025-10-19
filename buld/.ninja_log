@@ -1,0 +1,9 @@
+# ninja log v6
+1	390	1760866744747464987	INDICamRecorder_autogen/timestamp	24fc3e9ff152d7af
+1	390	1760866744747464987	INDICamRecorder_autogen/mocs_compilation.cpp	24fc3e9ff152d7af
+1	390	1760866744747464987	/Users/artemzubko/Projects/indi-camrecorder/buld/INDICamRecorder_autogen/timestamp	24fc3e9ff152d7af
+1	390	1760866744747464987	/Users/artemzubko/Projects/indi-camrecorder/buld/INDICamRecorder_autogen/mocs_compilation.cpp	24fc3e9ff152d7af
+390	1337	1760866744758733245	CMakeFiles/INDICamRecorder.dir/mainwindow.cpp.o	47d7c2a71389e9d2
+390	1347	1760866744758407913	CMakeFiles/INDICamRecorder.dir/INDICamRecorder_autogen/mocs_compilation.cpp.o	ad5e9f22ae8e6838
+390	1358	1760866744758616579	CMakeFiles/INDICamRecorder.dir/main.cpp.o	1d10af280032151f
+1358	1462	1760866745726677017	INDICamRecorder.app/Contents/MacOS/INDICamRecorder	e1da0977988e1e80
