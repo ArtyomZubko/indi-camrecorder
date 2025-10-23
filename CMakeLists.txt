@@ -41,7 +41,11 @@ else()
     endif()
 endif()
 
+add_subdirectory(libs/indi)
+
 target_link_libraries(INDICamRecorder PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(INDICamRecorder PUBLIC indiclient)
+
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
 # If you are developing for iOS or macOS you should consider setting an
