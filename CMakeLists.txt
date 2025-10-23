@@ -1,15 +1,73 @@
-cmake_minimum_required(VERSION 3.28)
-project(indi_camrecorder)
+cmake_minimum_required(VERSION 3.16)
 
-set(CMAKE_CXX_STANDARD 23)
+project(INDICamRecorder VERSION 0.1 LANGUAGES CXX)
 
-set(CMAKE_POLICY_DEFAULT_CMP0177 NEW)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
-add_executable(indi_camrecorder
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+
+set(PROJECT_SOURCES
         main.cpp
+        mainwindow.cpp
+        mainwindow.h
 )
 
-add_subdirectory(libs/imgui-cmake)
+if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    qt_add_executable(INDICamRecorder
+        MANUAL_FINALIZATION
+        ${PROJECT_SOURCES}
+    )
+# Define target properties for Android with Qt 6 as:
+#    set_property(TARGET INDICamRecorder APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
+#                 ${CMAKE_CURRENT_SOURCE_DIR}/android)
+# For more information, see https://doc.qt.io/qt-6/qt-add-executable.html#target-creation
+else()
+    if(ANDROID)
+        add_library(INDICamRecorder SHARED
+            ${PROJECT_SOURCES}
+        )
+# Define properties for Android with Qt 5 after find_package() calls as:
+#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
+    else()
+        add_executable(INDICamRecorder
+            ${PROJECT_SOURCES}
+        )
+    endif()
+endif()
+
 add_subdirectory(libs/indi)
 
-target_link_libraries(indi_camrecorder PUBLIC imgui indiclient)
+target_link_libraries(INDICamRecorder PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
+target_link_libraries(INDICamRecorder PUBLIC indiclient)
+
+
+# Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
+# If you are developing for iOS or macOS you should consider setting an
+# explicit, fixed bundle identifier manually though.
+if(${QT_VERSION} VERSION_LESS 6.1.0)
+  set(BUNDLE_ID_OPTION MACOSX_BUNDLE_GUI_IDENTIFIER com.example.INDICamRecorder)
+endif()
+set_target_properties(INDICamRecorder PROPERTIES
+    ${BUNDLE_ID_OPTION}
+    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+    MACOSX_BUNDLE TRUE
+    WIN32_EXECUTABLE TRUE
+)
+
+include(GNUInstallDirs)
+install(TARGETS INDICamRecorder
+    BUNDLE DESTINATION .
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+)
+
+if(QT_VERSION_MAJOR EQUAL 6)
+    qt_finalize_executable(INDICamRecorder)
+endif()

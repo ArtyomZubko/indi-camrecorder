@@ -1,0 +1,79 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-5ad51d9af5155cef8ad0.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.16"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "INDICamRecorder",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "INDICamRecorder::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-INDICamRecorder-Debug-2ab7bbf411ae1950b432.json",
+					"name" : "INDICamRecorder",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "INDICamRecorder_autogen::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-INDICamRecorder_autogen-Debug-7e0b7e71503b5b85a2ae.json",
+					"name" : "INDICamRecorder_autogen",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "INDICamRecorder_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-INDICamRecorder_autogen_timestamp_deps-Debug-698a6b9d18c0edbf239b.json",
+					"name" : "INDICamRecorder_autogen_timestamp_deps",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/Users/artemzubko/Projects/indi-camrecorder",
+		"source" : "/Users/artemzubko/Projects/indi-camrecorder"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 6
+	}
+}

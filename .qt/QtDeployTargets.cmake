@@ -1,0 +1,2 @@
+set(__QT_DEPLOY_TARGET_INDICamRecorder_FILE /Users/artemzubko/Projects/indi-camrecorder/INDICamRecorder.app/Contents/MacOS/INDICamRecorder)
+set(__QT_DEPLOY_TARGET_INDICamRecorder_TYPE EXECUTABLE)
